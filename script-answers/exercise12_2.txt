@@ -1,0 +1,13 @@
+Script started on 2023-02-03 18:01:41+02:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="92" LINES="23"]
+[?2004h]0;lkm@Laurin-pöytäkone: ~/koodit[01;32mlkm@Laurin-pöytäkone[00m:[01;34m~/koodit[00m$ docker container run -it ubuntu bash
+[?2004l[?2004h]0;root@9de6e2794f94: /root@9de6e2794f94:/# [K]0;root@9de6e2794f94: /root@9de6e2794f94:/# mkdir -p usr/src/ao pp
+[?2004l[?2004h]0;root@9de6e2794f94: /root@9de6e2794f94:/# touch usr/src/app/index.js
+[?2004l[?2004h]0;root@9de6e2794f94: /root@9de6e2794f94:/# [Kcd use r/src/app
+[?2004l[?2004h]0;root@9de6e2794f94: /usr/src/approot@9de6e2794f94:/usr/src/app# ls
+[?2004lindex.js
+[?2004h]0;root@9de6e2794f94: /usr/src/approot@9de6e2794f94:/usr/src/app# exit
+[?2004lexit
+[?2004h]0;lkm@Laurin-pöytäkone: ~/koodit[01;32mlkm@Laurin-pöytäkone[00m:[01;34m~/koodit[00m$ exit
+[?2004lexit
+
+Script done on 2023-02-03 18:02:57+02:00 [COMMAND_EXIT_CODE="0"]
