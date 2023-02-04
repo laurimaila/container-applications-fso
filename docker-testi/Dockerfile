@@ -2,7 +2,13 @@ FROM node:16
 
 WORKDIR /usr/src/app
 
-COPY ./index.js ./index.js
+COPY . .
 
-CMD node index.js
+RUN npm ci
+
+ENV DEBUG=docker-testi:*
+
+USER node
+
+CMD npm start
 
