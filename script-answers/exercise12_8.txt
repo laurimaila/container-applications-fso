@@ -1,0 +1,83 @@
+lauri@Laurin-p□yt□kone MINGW64 ~/koodit
+$ docker container ls
+CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS              PORTS                     NAMES
+58a6eabb9322   mongo     "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:3456->27017/tcp   todo-backend-mongo-1
+
+lauri@Laurin-p□yt□kone MINGW64 ~/koodit
+$ docker exec -it 58 mongosh -u root -p example
+Current Mongosh Log ID: 63e00cb15ec4ccfecd6546d7
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.2
+Using MongoDB:          6.0.4
+Using Mongosh:          1.6.2
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-02-05T20:04:20.927+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2023-02-05T20:04:21.461+00:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never'
+   2023-02-05T20:04:21.461+00:00: vm.max_map_count is too low
+------
+
+------
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+------
+
+test> show dbs
+admin         100.00 KiB
+config         12.00 KiB
+local          72.00 KiB
+the_database   40.00 KiB
+
+test> use the_database
+switched to db the_database
+
+the_database> show collections
+todos
+
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId("63e00bab1787cd44b3a02f22"),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId("63e00bab1787cd44b3a02f23"),
+    text: 'Learn about containers',
+    done: false
+  }
+]
+
+the_database> db.todos.insertOne({text: 'Increase the number of tools in my toolbelt', done: false})
+{
+  acknowledged: true,
+  insertedId: ObjectId("63e00d7a15a9a67a21ea535f")
+}
+
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId("63e00bab1787cd44b3a02f22"),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId("63e00bab1787cd44b3a02f23"),
+    text: 'Learn about containers',
+    done: false
+  },
+  {
+    _id: ObjectId("63e00d7a15a9a67a21ea535f"),
+    text: 'Increase the number of tools in my toolbelt',
+    done: false
+  }
+]
