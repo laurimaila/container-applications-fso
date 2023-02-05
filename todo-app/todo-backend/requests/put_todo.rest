@@ -1,0 +1,16 @@
+PUT http://localhost:3000/todos/63dfed641b5dac4af46e6e70
+content-type: application/json
+
+{
+    "text": "Uusi muokattu todo",
+    "done": false
+}
+
+###
+POST http://localhost:3000/todos
+content-type: application/json
+
+{
+    "text": "Taas uusi todo",
+    "done": false
+}
