@@ -1,0 +1,19 @@
+PUT http://localhost:3000/todos/63f2d148cdf8ba3ee173dd2e
+content-type: application/json
+
+{
+    "text": "Learn about docker",
+    "done": false
+}
+
+###
+POST http://localhost:3000/todos
+content-type: application/json
+
+{
+    "text": "New todo test 2",
+    "done": false
+}
+
+###
+DELETE http://localhost:3000/todos/63f2e1674984f118acc8d753
