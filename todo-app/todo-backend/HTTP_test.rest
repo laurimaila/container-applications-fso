@@ -11,7 +11,7 @@ POST http://localhost:3000/todos
 content-type: application/json
 
 {
-    "text": "New todo test 2",
+    "text": "New todo test 3",
     "done": false
 }
 
