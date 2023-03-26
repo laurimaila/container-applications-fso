@@ -14,4 +14,6 @@ You can run tests with `npm run test`
 
 Use REACT_APP_BACKEND_URL to set where the backend for this application is.
 
+Ensin docker build -t todo-front .
+
 Tällä hetkellä toimii docker run -p 3002:80 todo-front
