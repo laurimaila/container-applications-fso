@@ -1,13 +1,11 @@
 services:
   app:
-    build:
-      context: ./todo-frontend 
-      dockerfile: dev.Dockerfile 
+    image: node:16
     volumes:
-      - ./todo-frontend/src:/usr/src/app/src 
-      - ./todo-frontend/public:/usr/src/app/public
+      - ./todo-frontend:/usr/src/app/
     environment:
       - REACT_APP_BACKEND_URL=http://localhost:8080/api/
+    command: bash -c "cd /usr/src/app && npm install && npm start"
     container_name: frontend-dev 
 
   nginx:
@@ -22,17 +20,16 @@ services:
       - server
 
   server:
-    build:
-      context: ./todo-backend
-      dockerfile: dev.Dockerfile
+    image: node:16
     volumes:
-      - ./todo-backend/src:/usr/src/app/src
+      - ./todo-backend:/usr/src/app
     environment:
       - REDIS_URL=redis://redis:6379
       - MONGO_URL=mongodb://the_username:the_password@mongo:27017/the_database
     depends_on:
       - mongo
       - redis
+    command: bash -c "cd /usr/src/app && npm install && npm run dev"
     container_name: backend-dev
 
   mongo:

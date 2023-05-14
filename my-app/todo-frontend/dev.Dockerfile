@@ -1,3 +1,5 @@
+# Replaced with commands in compose-file
+
 FROM node:16
 
 WORKDIR /usr/src/app
