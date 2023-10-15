@@ -1,5 +1,5 @@
-const express = require('express');
 const logger = require('morgan');
+const express = require('express');
 const cors = require('cors');
 
 const indexRouter = require('./routes/index');
