@@ -9,7 +9,7 @@ services:
     ports: 
       - 3000:3000 # This will map the port 3000 of the container to the port 3000 of the host machine
     environment:
-      - MONGO_URL=mongodb://username:password@mongo:27017/database
+      - NODE_ENV=production
     
   backend:
     image: phonebook-back
@@ -20,15 +20,19 @@ services:
     environment:
       - MONGO_URL=mongodb://username:password@mongo:27017/database
       - BACKEND_PORT=3001
+      - NODE_ENV=production
+    ports: 
+      - 3001:3001
     depends_on:
       - mongo
 
   mongo:
     image: mongo
+    container_name: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: username
       MONGO_INITDB_ROOT_PASSWORD: password
       MONGO_INITDB_DATABASE: database
     volumes:
-      - ./backend/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
-      - ./backend/mongo/data:/data/db
+      - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - ./mongo/data:/data/db

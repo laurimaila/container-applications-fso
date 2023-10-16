@@ -2,11 +2,12 @@ require('dotenv').config()
 const express = require('express')
 const Person = require('./models/person')
 var morgan = require('morgan')
+const cors = require('cors')
 const app = express()
 morgan.token('contact', function (req) { return JSON.stringify(req.body) })
 
-/* const cors = require('cors')
-app.use(cors()) */
+
+app.use(cors())
 
 app.use(express.static('build'))
 app.use(express.json())
@@ -81,7 +82,7 @@ const unknownEndpoint = (request, response) => {
     response.status(404).send({ error: 'unknown endpoint' })
 }
 
-const PORT = process.env.BACKEND_PORT
+const PORT = process.env.BACKEND_PORT | 3001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })

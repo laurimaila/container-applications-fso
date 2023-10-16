@@ -5,10 +5,10 @@ WORKDIR /app
 ENV NODE_ENV=development
 
 # Install node modules
-COPY --link package-lock.json package.json ./
+COPY package-lock.json package.json ./
 RUN npm i
 
 # Copy application code
-COPY --link . .
+COPY . .
 
 CMD npm run dev

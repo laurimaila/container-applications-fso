@@ -2,25 +2,30 @@ version: '3.8'
 services:
   frontend:
     image: phonebook-front-dev
+    container_name: phonebook-front-dev
     build:
       context: ./frontend # The context will pick this directory as the "build context"
-      dockerfile: dev.Dockerfile # This will simply tell which dockerfile to read
+      dockerfile: dev.Dockerfile
     ports: 
-      - 3000:3000 # This will map the port 3000 of the container to the port 3000 of the host machine
+      - 3000:3000
     environment:
-      - MONGO_URL=mongodb://username:password@mongo:27017/database
+      - NODE_ENV=development
     volumes:
       - ./frontend:/app
       - /app/node_modules # This will prevent the node_modules folder from being overwritten by the volume
     
   backend:
     image: phonebook-back-dev
+    container_name: phonebook-back-dev
     build:
       context: ./backend
       dockerfile: dev.Dockerfile
     environment:
       - MONGO_URL=mongodb://username:password@mongo:27017/database
       - BACKEND_PORT=3001
+      - NODE_ENV=development
+    ports: 
+      - 3001:3001
     volumes:
       - ./backend:/app
       - /app/node_modules
@@ -29,10 +34,11 @@ services:
 
   mongo:
     image: mongo
+    container_name: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: username
       MONGO_INITDB_ROOT_PASSWORD: password
       MONGO_INITDB_DATABASE: database
     volumes:
-      - ./backend/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
-      - ./backend/mongo/data:/data/db
+      - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - ./mongo/data:/data/db
