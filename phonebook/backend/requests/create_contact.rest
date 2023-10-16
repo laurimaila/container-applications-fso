@@ -1,0 +1,23 @@
+POST http://localhost:3001/api/persons/ 
+content-type: application/json
+
+{
+    "name": "Sauli Niinistö",
+    "number": "040-7654321"
+}
+
+###
+POST http://localhost:3001/api/persons/ 
+content-type: application/json
+
+{
+    "name": "Sauli Niinistö"
+}
+
+###
+POST http://localhost:3001/api/persons/ 
+content-type: application/json
+
+{
+    "number": "040-7654321"
+}
